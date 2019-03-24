@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .fields import IdField
+import django.utils.timezone as timezone
 # Create your models here.
 
 
@@ -54,7 +55,7 @@ class actInfo(models.Model):
 class actRecord(models.Model):
     act = models.ForeignKey('actInfo', on_delete=models.DO_NOTHING, verbose_name='活动名称')
     member = models.ForeignKey('MemberInfo', on_delete=models.DO_NOTHING, verbose_name='参加人员')
-    start_time=models.DateTimeField(verbose_name='活动时间')
+    start_time=models.DateTimeField(verbose_name='活动时间',default=timezone.now())
     address=models.CharField(max_length=128,verbose_name='活动地点',default='无')
     score=models.IntegerField(verbose_name="活动得分",default=2)
     duration=models.IntegerField(default=2,verbose_name='持续时间')
