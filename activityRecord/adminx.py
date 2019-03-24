@@ -40,22 +40,23 @@ class actRecordAdmin(object):
 @xadmin.sites.register(models.allRecorddView)
 class allRecorddViewAdmin(object):
     list_display = ('name','post',"mem_id","actname",'join_time',"score")
-    ordering = ('post','mem_id','name')
+    ordering = ("score",'post',)
     search_fields = ('name','actname' )
     list_filter = ('name', 'actname')
     model_icon = 'fa fa-envelope'
 
 @xadmin.sites.register(models.allRecordSumView)
 class allRecorddViewAdmin(object):
-    list_display = ('name','post',"mem_id","score")
+    list_display = ('name','post',"mem_id",'join_time',"score")
     ordering = ('post','mem_id','name')
     search_fields = ('name' )
     list_filter = ('name', )
     model_icon="fa fa-check"
+    readonly_fields = ('name', )
 
-admin.site.site_header = '社区党员积分系统'
-admin.site.site_title='社区党员积分系统'
-admin.site.index_title='社区党员积分系统'
+admin.site.site_header = '石园南社区党员积分系统'
+admin.site.site_title='石园南社区党员积分系统'
+admin.site.index_title='石园南社区党员积分系统'
 
 @xadmin.sites.register(views.BaseAdminView)
 class BaseSetting(object):
@@ -65,8 +66,8 @@ class BaseSetting(object):
 
 @xadmin.sites.register(views.CommAdminView)
 class GlobalSettings(object):
-    site_title='社区党员积分系统'
-    site_footer='社区党员积分系统'
+    site_title='石园南社区党员积分系统'
+    site_footer='石园南社区党员积分系统'
     menu_style='according' #设置菜单收起功能
-    site_header = '社区党员积分系统'
-    index_title = '社区党员积分系统'
+    site_header = '石园南社区党员积分系统'
+    index_title = '石园南社区党员积分系统'

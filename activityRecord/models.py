@@ -102,6 +102,7 @@ class allRecordSumView(models.Model):
     )
     post=models.CharField(choices=post_choice,verbose_name="职位",max_length=20)
     mem_id = models.CharField(verbose_name="编号", max_length=6)
+    join_time=models.IntegerField(verbose_name="参加次数")
     score=models.IntegerField(verbose_name="总分")
 
     class Meta:
