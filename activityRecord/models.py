@@ -16,6 +16,12 @@ class MemberInfo(models.Model):
         ('unknown','未知'),
     )
     sex = models.CharField(choices=sex_choice, max_length=8,default='male',verbose_name=' 性别')
+    branch_choice = (
+        ('community', '社区党支部'),
+        ('retired', '离退休老干部党支部'),
+        ('company','非公企业联合党支部'),
+    )
+    branch = models.CharField(choices=branch_choice, default='community',max_length=32, verbose_name='所属支部', )
     post_choice=(
         ('shuji', '书记'),
         ('fushuji', '副书记'),
@@ -43,6 +49,7 @@ class MemberInfo(models.Model):
 class actInfo(models.Model):
     name=models.CharField(max_length=32,verbose_name='活动名称')
     phone=models.CharField(max_length=11,blank=True,verbose_name='负责人电话')
+    defaultScore = models.IntegerField( default='2', verbose_name='负责人电话')
     notice=models.CharField(max_length=128,blank=True,verbose_name='备注')
     def __str__(self):
         return "%s" %(self.name)
@@ -57,7 +64,7 @@ class actRecord(models.Model):
     member = models.ForeignKey('MemberInfo', on_delete=models.DO_NOTHING, verbose_name='参加人员')
     start_time=models.DateTimeField(verbose_name='活动时间',default=timezone.now())
     address=models.CharField(max_length=128,verbose_name='活动地点',default='无')
-    score=models.IntegerField(verbose_name="活动得分",default=2)
+    score=models.IntegerField(verbose_name="活动得分",default=0)
     duration=models.IntegerField(default=2,verbose_name='持续时间')
     #should_come_num=models.IntegerField(verbose_name='应到人数')
     #absentee=models.CharField(blank=True,max_length=128,verbose_name='缺席名单')
@@ -93,6 +100,12 @@ class allRecorddView(models.Model):
 #所有项总分累计
 class allRecordSumView(models.Model):
     name=models.CharField(verbose_name="姓名",max_length=20)
+    sex_choice = (
+        ('male', '男'),
+        ('female', '女'),
+        ('unknown', '未知'),
+    )
+    sex = models.CharField(choices=sex_choice, max_length=8, default='male', verbose_name=' 性别')
     post_choice=(
         ('shuji', '书记'),
         ('fushuji', '副书记'),
@@ -101,7 +114,16 @@ class allRecordSumView(models.Model):
         ('qunzhong','群众'),
     )
     post=models.CharField(choices=post_choice,verbose_name="职位",max_length=20)
+    branch_choice = (
+        ('community', '社区党支部'),
+        ('retired', '离退休老干部党支部'),
+        ('company', '非公企业联合党支部'),
+    )
+    branch = models.CharField(choices=branch_choice, default='community', max_length=32, verbose_name='所属支部', )
     mem_id = models.CharField(verbose_name="编号", max_length=6)
+    phoneNum = models.CharField(blank=True, max_length=25, verbose_name='电话')
+    join_date = models.DateField(verbose_name='登记日期')
+    notice = models.CharField(max_length=128, blank=True, verbose_name='备注')
     join_time=models.IntegerField(verbose_name="参加次数")
     score=models.IntegerField(verbose_name="总分")
 

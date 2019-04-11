@@ -9,11 +9,11 @@ from django.db.models import Q
 
 @xadmin.sites.register(models.MemberInfo)
 class memberAdmin(object):
-    list_display = ('name','mem_id','post','sex','phoneNum','join_date','notice',)
+    list_display = ('name','mem_id','branch','post','sex','phoneNum','join_date','notice',)
     list_editable = ('notice',)
     list_per_page = 50
     ordering = ('-join_date',)
-    list_filter = ('sex', 'join_date','post') #过滤器
+    list_filter = ('sex', 'join_date','post','branch') #过滤器
     search_fields = ('name', 'mem_id')          #搜索字段
     date_hierarchy = 'join_date'        #详细时间分层筛选
     #model_icon="fa fa-user"
@@ -47,7 +47,7 @@ class allRecorddViewAdmin(object):
 
 @xadmin.sites.register(models.allRecordSumView)
 class allRecorddViewAdmin(object):
-    list_display = ('name','post',"mem_id",'join_time',"score")
+    list_display = ('name','sex','branch','post',"mem_id",'phoneNum','join_date','notice','join_time',"score")
     ordering = ('post','mem_id','name')
     search_fields = ('name' )
     list_filter = ('name', )
