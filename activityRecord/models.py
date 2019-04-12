@@ -49,10 +49,10 @@ class MemberInfo(models.Model):
 class actInfo(models.Model):
     name=models.CharField(max_length=32,verbose_name='活动名称')
     phone=models.CharField(max_length=11,blank=True,verbose_name='负责人电话')
-    defaultScore = models.IntegerField( default='2', verbose_name='负责人电话')
+    defaultScore = models.IntegerField( default=2, verbose_name='默认分数')
     notice=models.CharField(max_length=128,blank=True,verbose_name='备注')
     def __str__(self):
-        return "%s" %(self.name)
+        return "%s" %(self.name+'_'+str(self.defaultScore)+'分')
     class Meta:
         verbose_name = '活动列表'
         verbose_name_plural = verbose_name
@@ -60,15 +60,21 @@ class actInfo(models.Model):
 
 #活动记录
 class actRecord(models.Model):
-    act = models.ForeignKey('actInfo', on_delete=models.DO_NOTHING, verbose_name='活动名称')
+    act = models.ForeignKey('actInfo', on_delete=models.DO_NOTHING, verbose_name='活动名称',help_text='后缀为该活动默认分数')
     member = models.ForeignKey('MemberInfo', on_delete=models.DO_NOTHING, verbose_name='参加人员')
     start_time=models.DateTimeField(verbose_name='活动时间',default=timezone.now())
     address=models.CharField(max_length=128,verbose_name='活动地点',default='无')
-    score=models.IntegerField(verbose_name="活动得分",default=0)
+    score=models.IntegerField(verbose_name="活动得分",default=0,help_text='若填0分则记录该活动的默认分数')
     duration=models.IntegerField(default=2,verbose_name='持续时间')
     #should_come_num=models.IntegerField(verbose_name='应到人数')
     #absentee=models.CharField(blank=True,max_length=128,verbose_name='缺席名单')
     notice=models.CharField(max_length=128,blank=True,verbose_name='备注')
+    def save(self):
+        if self.score==0:
+            self.score=self.act.defaultScore
+        super(actRecord,self).save()
+
+
     def __str__(self):
         return "{}参加{}".format(self.member,self.act)
     class Meta:

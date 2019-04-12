@@ -22,7 +22,7 @@ class memberAdmin(object):
 
 @xadmin.sites.register(models.actInfo)
 class actAdmin(object):
-    list_display = ('name','phone','notice')
+    list_display = ('name','defaultScore','phone','notice')
     list_editable = ('notice',)
 
 
@@ -35,7 +35,7 @@ class actRecordAdmin(object):
     search_fields = ('act', )          #搜索字段
     date_hierarchy = 'start_time'        #详细时间分层筛选
     model_icon="fa fa-tag"
-
+    #add_form_template = 'activityRecord/customed_addrecord_model_form.html'
 
 @xadmin.sites.register(models.allRecorddView)
 class allRecorddViewAdmin(object):
