@@ -18,10 +18,9 @@ from django.urls import path,include
 from django.contrib.staticfiles.views import serve
 import xadmin
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', xadmin.site.urls),
     path('internal/', include('activityRecord.urls')),
-    path('favicon.ico', serve, {'path': 'static/favicon.ico'}),
+    path('favicon.ico', serve, {'path': 'favicon.ico'}),
 ]
