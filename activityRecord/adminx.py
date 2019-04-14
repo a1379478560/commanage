@@ -22,9 +22,10 @@ class memberAdmin(object):
 
 @xadmin.sites.register(models.actInfo)
 class actAdmin(object):
-    list_display = ('name','defaultScore','phone','notice')
-    list_editable = ('notice',)
-
+    list_display = ('name','category','defaultScore','phone','notice')
+    list_editable = ('notice','category')
+    list_filter = ('category', ) #过滤器
+    search_fields = ('name', )
 
 @xadmin.sites.register(models.actRecord)
 class actRecordAdmin(object):
@@ -47,10 +48,10 @@ class allRecorddViewAdmin(object):
 
 @xadmin.sites.register(models.allRecordSumView)
 class allRecorddViewAdmin(object):
-    list_display = ('name','sex','branch','post',"mem_id",'phoneNum','join_date','notice','join_time',"score")
+    list_display = ('name','sex','branch','post',"mem_id",'phoneNum','changgui_score','jiafen_score','jianfen_score','yipiaofoujue_score','notice','join_time',"score")
     ordering = ('post','mem_id','name')
     search_fields = ('name' )
-    list_filter = ('name', )
+    list_filter = ('name','branch' )
     model_icon="fa fa-check"
     readonly_fields = ('name', )
 

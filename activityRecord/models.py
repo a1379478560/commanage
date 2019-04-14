@@ -48,6 +48,13 @@ class MemberInfo(models.Model):
 #活动信息
 class actInfo(models.Model):
     name=models.CharField(max_length=32,verbose_name='活动名称')
+    category_choice=(
+        ('changgui','常规指标'),
+        ('jiafen','加分项指标'),
+        ('jianfen','减分项'),
+        ('yipiaofoujue','一票否决'),
+    )
+    category=models.CharField(choices=category_choice, max_length=32,default='changgui', verbose_name='指标类别')
     phone=models.CharField(max_length=11,blank=True,verbose_name='负责人电话')
     defaultScore = models.IntegerField( default=2, verbose_name='默认分数')
     notice=models.CharField(max_length=128,blank=True,verbose_name='备注')
@@ -131,6 +138,10 @@ class allRecordSumView(models.Model):
     join_date = models.DateField(verbose_name='登记日期')
     notice = models.CharField(max_length=128, blank=True, verbose_name='备注')
     join_time=models.IntegerField(verbose_name="参加次数")
+    changgui_score=models.IntegerField(verbose_name='常规指标')
+    jiafen_score = models.IntegerField(verbose_name='加分指标')
+    jianfen_score = models.IntegerField(verbose_name='减分指标')
+    yipiaofoujue_score = models.IntegerField(verbose_name='一票否决')
     score=models.IntegerField(verbose_name="总分")
 
     class Meta:

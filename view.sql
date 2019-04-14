@@ -10,6 +10,10 @@ SELECT max(member.id) id,
         max(member.join_date) join_date,
         max(member.notice) notice,
         count(actrecord.score) join_time,
+        sum(case when actinfo.category='changgui' then actrecord.score else 0 end ) changgui_score,
+        sum(case when actinfo.category='jiafen' then actrecord.score else 0 end ) jiafen_score,
+        sum(case when actinfo.category='jianfen' then actrecord.score else 0 end ) jianfen_score,
+        sum(case when actinfo.category='yipiaofoujue' then actrecord.score else 0 end ) yipiaofoujue_score,
         sum(actrecord.score) score
 
 FROM  activityRecord_memberinfo member,
@@ -17,5 +21,3 @@ FROM  activityRecord_memberinfo member,
   activityRecord_actrecord actrecord
 where actinfo.id=actrecord.act_id and actrecord.member_id=member.id
 group by member.id;
-
-
