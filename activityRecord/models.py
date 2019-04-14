@@ -99,8 +99,21 @@ class allRecorddView(models.Model):
         ('qunzhong','群众'),
     )
     post=models.CharField(choices=post_choice,verbose_name="职位",max_length=20)
+    branch_choice = (
+        ('community', '社区党支部'),
+        ('retired', '离退休老干部党支部'),
+        ('company', '非公企业联合党支部'),
+    )
+    branch = models.CharField(choices=branch_choice, default='community', max_length=32, verbose_name='所属支部', )
     mem_id = models.CharField(verbose_name="编号", max_length=6)
     actname=models.CharField(max_length=30,verbose_name="活动名称")
+    category_choice = (
+        ('changgui', '常规指标'),
+        ('jiafen', '加分项指标'),
+        ('jianfen', '减分项'),
+        ('yipiaofoujue', '一票否决'),
+    )
+    category = models.CharField(choices=category_choice, max_length=32, default='changgui', verbose_name='指标类别')
     join_time=models.IntegerField(verbose_name="参加次数",)
     score=models.IntegerField(verbose_name="单项得分")
 

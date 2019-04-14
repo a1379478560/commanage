@@ -40,10 +40,10 @@ class actRecordAdmin(object):
 
 @xadmin.sites.register(models.allRecorddView)
 class allRecorddViewAdmin(object):
-    list_display = ('name','post',"mem_id","actname",'join_time',"score")
+    list_display = ('name','post','branch',"mem_id","actname",'category','join_time',"score")
     ordering = ("score",'post',)
     search_fields = ('name','actname' )
-    list_filter = ('name', 'actname')
+    list_filter = ('branch','category','actname', 'name')
     model_icon = 'fa fa-envelope'
 
 @xadmin.sites.register(models.allRecordSumView)

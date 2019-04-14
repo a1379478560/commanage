@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.staticfiles.views import serve
 import xadmin
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', xadmin.site.urls),
-    path('internal/', include('activityRecord.urls'))
+    path('internal/', include('activityRecord.urls')),
+    path('favicon.ico', serve, {'path': 'static/favicon.ico'}),
 ]
