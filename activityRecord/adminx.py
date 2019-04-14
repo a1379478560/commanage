@@ -41,7 +41,7 @@ class actRecordAdmin(object):
 @xadmin.sites.register(models.allRecorddView)
 class allRecorddViewAdmin(object):
     list_display = ('name','post','branch',"mem_id","actname",'category','join_time',"score")
-    ordering = ("score",'post',)
+    ordering = ('branch','post',"name",'category','score')
     search_fields = ('name','actname' )
     list_filter = ('branch','category','actname', 'name')
     model_icon = 'fa fa-envelope'
@@ -49,7 +49,7 @@ class allRecorddViewAdmin(object):
 @xadmin.sites.register(models.allRecordSumView)
 class allRecorddViewAdmin(object):
     list_display = ('name','sex','branch','post',"mem_id",'phoneNum','changgui_score','jiafen_score','jianfen_score','yipiaofoujue_score','notice','join_time',"score")
-    ordering = ('post','mem_id','name')
+    ordering = ('branch', 'post', "name",'score')
     search_fields = ('name' )
     list_filter = ('name','branch' )
     model_icon="fa fa-check"
