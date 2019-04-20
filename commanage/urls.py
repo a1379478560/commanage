@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.contrib.staticfiles.views import serve
 import xadmin
-
+from activityRecord.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'', xadmin.site.urls),
+    path(r'xadmin/', xadmin.site.urls),
+    path(r'', index),
     path('internal/', include('activityRecord.urls')),
     path('favicon.ico', serve, {'path': 'favicon.ico'}),
 ]

@@ -27,6 +27,7 @@ class MemberInfo(models.Model):
         ('fushuji', '副书记'),
         ('weiyuan', '委员'),
         ('putong','普通党员'),
+        ('yubei', '预备党员'),
         ('qunzhong','群众'),
     )
     post=models.CharField(choices=post_choice,max_length=10,default='putong',verbose_name="职务")
@@ -96,6 +97,7 @@ class allRecorddView(models.Model):
         ('fushuji', '副书记'),
         ('weiyuan', '委员'),
         ('putong','普通党员'),
+        ('yubei','预备党员'),
         ('qunzhong','群众'),
     )
     post=models.CharField(choices=post_choice,verbose_name="职位",max_length=20)
@@ -137,6 +139,7 @@ class allRecordSumView(models.Model):
         ('fushuji', '副书记'),
         ('weiyuan', '委员'),
         ('putong','普通党员'),
+        ('yubei', '预备党员'),
         ('qunzhong','群众'),
     )
     post=models.CharField(choices=post_choice,verbose_name="职位",max_length=20)
