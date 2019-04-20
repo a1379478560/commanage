@@ -22,4 +22,4 @@ def index(request):
             data[p.branch][0] += 1
         data[p.branch][2] += 1
 
-    return render(request,r"activityRecord\index.html",{'data':data})
+    return render(request,r"activityRecord/index.html",{'data':data})
