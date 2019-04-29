@@ -20,8 +20,8 @@ import xadmin
 from activityRecord.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'xadmin/', xadmin.site.urls),
-    path(r'', index),
+    path(r'', xadmin.site.urls),
+    path(r'backindex', index),
     path('internal/', include('activityRecord.urls')),
     path('favicon.ico', serve, {'path': 'favicon.ico'}),
 ]

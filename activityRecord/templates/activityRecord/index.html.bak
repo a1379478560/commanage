@@ -10,6 +10,15 @@
 
 </head>
 <body>
+<p>
+	<br />
+</p>
+<p style="text-align:center;">
+	<span style="color:#337FE5;"><a href="/xadmin"><input type="submit" id="su" value="登录后台" class="bg s_btn"></a></span>
+</p>
+<p>
+	<br />
+</p>
 <h1 align="center" style="text-align:center;">
 	中共北京市石园街道石园南区党总支<span></span> 
 </h1>
@@ -22,7 +31,13 @@
 <p class="MsoNormal" align="left">
 	书 <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>记：靳玉欣<span>&nbsp;&nbsp; </span>副书记：王艳丽<span>&nbsp; </span>组织委员：马会娟<span>&nbsp;&nbsp;&nbsp; </span>纪检委员：解晓莉<span>&nbsp; </span>宣传委员：李燕<span>&nbsp;</span> 
 </p>
+<p class="MsoNormal" align="left">
+	<span>&nbsp;</span>
+</p>
 <hr />
+<p>
+	<br />
+</p>
 <h2 align="center" style="text-align:center;">
 	社区党支部<span></span> 
 </h2>
@@ -39,6 +54,9 @@
 	<span>&nbsp;</span>
 </p>
 <hr />
+<p>
+	<br />
+</p>
 <h2 align="center" style="text-align:center;">
 	离退休老干部党支部<span></span> 
 </h2>
@@ -51,8 +69,13 @@
 <p class="MsoNormal" align="left">
 	正 式 党 员：<span>&nbsp; <span style="color:#E53333;">{{ data.retired.0 }}</span></span>人<span>&nbsp;&nbsp; </span>预备党员：<span>&nbsp;<span style="color:#E53333;"> {{ data.retired.1 }}</span>&nbsp;</span>人<span>&nbsp;&nbsp; </span>共计<span>:&nbsp; &nbsp;<span style="color:#E53333;">{{ data.retired.2 }}</span></span>人<span></span>
 </p>
-
+<p class="MsoNormal" align="left">
+	<span>&nbsp;</span>
+</p>
 <hr />
+<p>
+	<br />
+</p>
 <p class="MsoNormal" align="left">
 	<span>&nbsp;</span> 
 </p>
@@ -73,6 +96,12 @@
 </p>
 <p class="MsoNormal" align="left">
 	<span>&nbsp;</span> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
 </p>
 </body>
 </html>
